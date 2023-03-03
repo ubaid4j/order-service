@@ -1,6 +1,7 @@
 package dev.ubaid.orderservice.domain;
 
 import dev.ubaid.orderservice.book.Book;
+import dev.ubaid.orderservice.book.BookClient;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import reactor.core.publisher.Flux;
@@ -9,6 +10,7 @@ import reactor.core.publisher.Mono;
 @Service
 @RequiredArgsConstructor
 public class OrderService {
+    private final BookClient bookClient;
     private final OrderRepository orderRepository;
     
     public Flux<Order> getAllOrders() {
@@ -16,8 +18,10 @@ public class OrderService {
     }
     
     public Mono<Order> submitOrder(String isbn, int quantity) {
-        return Mono.just(buildRejectedOrder(isbn, quantity))
-                   .flatMap(orderRepository::save);
+        return bookClient.getBookByIsbn(isbn)
+            .map(book -> buildAcceptedOrder(book, quantity))
+            .defaultIfEmpty(buildRejectedOrder(isbn, quantity))
+            .flatMap(orderRepository::save);
     }
     
     private static Order buildAcceptedOrder(Book book, int quantity) {
