@@ -7,5 +7,7 @@ import org.springframework.boot.context.properties.ConfigurationProperties;
 @ConfigurationProperties(prefix = "polar")
 public record ClientProperties(
     @NotNull
-    URI catalogServiceUri
+    URI catalogServiceUri,
+    @NotNull
+    String homeMessage
 ) {}

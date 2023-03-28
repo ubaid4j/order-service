@@ -25,3 +25,4 @@ server:
     
 polar:
   catalog-service-uri: "http://localhost:50101"
+  home-message: Default Env, Welcome here
