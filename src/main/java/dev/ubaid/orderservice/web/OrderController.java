@@ -18,7 +18,6 @@ import reactor.core.publisher.Mono;
 @RequiredArgsConstructor
 public class OrderController {
     
-    private final BookClient bookClient;
     private final OrderService orderService;
     
     @GetMapping
