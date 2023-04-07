@@ -21,19 +21,19 @@ spec:
           ports:
             - containerPort: 50101
           env:
-            - name: SPRING_DATASOURCE_URL
+            - name: SPRING_FLYWAY_URL
               value: jdbc:postgresql://polar-postgres/polardb_order
             - name: SPRING_R2DBC_URL
               value: r2dbc:postgresql://polar-postgres/polardb_order
-            - name: SPRING_DATASOURCE_USERNAME
+            - name: SPRING_R2DBC_USERNAME
               value: user
-            - name: SPRING_DATASOURCE_PASSWORD
+            - name: SPRING_R2DBC_PASSWORD
               value: password
             - name: SPRING_PROFILES_ACTIVE
               value: prod
             - name: SPRING_CLOUD_CONFIG_URI
               value: http://config-service
-              # TODO Create a minimal reproducible sample and create issue in spring boot repo  
+              # TODO Create a minimal reproducible sample and create issue in spring boot repo
             - name: SPRING_CLOUD_CONFIG_FAIL_FAST
               value: "false"
           lifecycle:
