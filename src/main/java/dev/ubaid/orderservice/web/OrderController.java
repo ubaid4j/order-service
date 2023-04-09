@@ -1,6 +1,5 @@
 package dev.ubaid.orderservice.web;
 
-import dev.ubaid.orderservice.book.BookClient;
 import dev.ubaid.orderservice.domain.Order;
 import dev.ubaid.orderservice.domain.OrderService;
 import jakarta.validation.Valid;
@@ -14,17 +13,17 @@ import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 
 @RestController
-@RequestMapping("orders")
+@RequestMapping("/api/orders")
 @RequiredArgsConstructor
 public class OrderController {
-    
+
     private final OrderService orderService;
-    
+
     @GetMapping
     public Flux<Order> getAllOrders() {
         return orderService.getAllOrders();
     }
-    
+
     @PostMapping
     public Mono<Order> submitOrder(
         @RequestBody @Valid OrderRequest orderRequest

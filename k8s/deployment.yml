@@ -19,7 +19,7 @@ spec:
           image: ghcr.io/ubaid4j/order-service:0.0.1-snapshot
           imagePullPolicy: IfNotPresent
           ports:
-            - containerPort: 50101
+            - containerPort: 50201
           env:
             - name: SPRING_FLYWAY_URL
               value: jdbc:postgresql://order-postgres/polardb_order
