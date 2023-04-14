@@ -6,9 +6,22 @@ spring:
   cloud:
     config:
       enabled: false
+    function:
+      definition: dispatchOrder
+    stream:
+      bindings:
+        dispatchOrder-in-0:
+          destination: order-dispatched
+          group: {spring.application.name}
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: user
+    password: password
+    connection-timeout: 5s
   r2dbc:
     username: polardb
-    password: 
+    password:
     url: r2dbc:postgresql://localhost:5590/polardb_order
     pool:
       max-create-connection-time: 2s
@@ -18,7 +31,7 @@ spring:
     user: ${spring.r2dbc.username}
     password: ${spring.r2dbc.password}
     url: jdbc:postgresql://localhost:5590/polardb_order
-  
+
 
 server:
   port: 50201
@@ -26,7 +39,7 @@ server:
   netty:
     connection-timeout: 2s
     idle-timeout: 15s
-    
+
 polar:
   catalog-service-uri: "http://localhost:50101"
   home-message: Default Env, Welcome here
