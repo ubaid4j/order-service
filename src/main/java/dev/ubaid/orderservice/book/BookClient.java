@@ -27,9 +27,16 @@ public class BookClient {
             .uri(BOOKS_ROOT_API + isbn)
             .retrieve()
             .bodyToMono(Book.class)
-            .timeout(Duration.ofSeconds(3), Mono.empty())
+            .timeout(Duration.ofSeconds(3), fallback(BOOKS_ROOT_API + isbn))
             .onErrorResume(WebClientResponseException.class, LOG_ERROR)
             .retryWhen(Retry.backoff(3, Duration.ofMillis(100)))
             .onErrorResume(Exception.class, LOG_ERROR);
+    }
+
+    private Mono<Book> fallback(String req) {
+        return Mono.defer(() -> {
+            log.error("{} timed out. ", req);
+            return Mono.empty();
+        });
     }
 }

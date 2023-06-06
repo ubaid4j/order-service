@@ -12,3 +12,8 @@ spring:
     url: r2dbc:postgresql://localhost:5590/polardb_order
   flyway:
     url: jdbc:postgresql://localhost:5590/polardb_order
+
+logging:
+  level:
+    root: debug
+DEBUG: true
