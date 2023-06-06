@@ -1,3 +1,29 @@
+management:
+  endpoints:
+    web:
+      base-path: /management
+      exposure:
+        include:
+          [
+            'configprops',
+            'env',
+            'health',
+            'info',
+            'jhimetrics',
+            'jhiopenapigroups',
+            'logfile',
+            'loggers',
+            'prometheus',
+            'threaddump',
+            'caches',
+            'liquibase',
+          ]
+  info:
+    git:
+      mode: full
+    env:
+      enabled: true
+
 spring:
   application:
     name: order-service
