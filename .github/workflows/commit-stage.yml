@@ -3,7 +3,7 @@ on: push
 env:
   REGISTRY: ghcr.io
   IMAGE_NAME: ubaid4j/order-service
-  VERSION: 0.0.2-SNAPSHOT
+  VERSION: 0.0.3-SNAPSHOT
 jobs:
   build:
     name: Build and Test
