@@ -1,21 +1,9 @@
-buildscript {
-	dependencies {
-		classpath 'org.graalvm.buildtools:native-gradle-plugin:0.9.20'
-	}
-}
-
 plugins {
 	id 'java'
 	id 'org.springframework.boot' version '3.0.5'
 	id 'io.spring.dependency-management' version '1.1.0'
-	id 'org.graalvm.buildtools.native' version '0.9.18'
 	id "com.gorylenko.gradle-git-properties" version "2.4.1"
 }
-
-if (project.hasProperty('native')) {
-	apply plugin: 'org.graalvm.buildtools.native'
-}
-
 
 group = 'dev.ubaid'
 version = '0.0.1-SNAPSHOT'
@@ -73,17 +61,9 @@ tasks.named('test') {
 }
 
 bootBuildImage {
-	if (project.hasProperty("native")) {
-		environment = [
-				'SPRING_PROFILES_ACTIVE': 'prod',
-				'BP_NATIVE_IMAGE': 'true',
-
-		]
-	} else {
-		environment = [
-				'SPRING_PROFILES_ACTIVE': 'prod',
-		]
-	}
+	environment = [
+			'SPRING_PROFILES_ACTIVE': 'prod',
+	]
 	docker {
 		if (project.hasProperty("ci")) {
 			// configure the publishRegistry task here
