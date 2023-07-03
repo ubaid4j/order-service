@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: order-service
-          image: ghcr.io/ubaid4j/order-service:0.0.1-snapshot
+          image: ghcr.io/ubaid4j/order-service:0.0.4-snapshot
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 50201
