@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: order-service
-          image: ghcr.io/ubaid4j/order-service:0.0.4-snapshot
+          image: ghcr.io/ubaid4j/order-service:0.0.5-snapshot
           imagePullPolicy: IfNotPresent
           ports:
             - containerPort: 50201
@@ -31,6 +31,8 @@ spec:
               value: order
             - name: SPRING_PROFILES_ACTIVE
               value: prod
+            - name: AUTH_SERVER_URL
+              value: "http://polar-keycloak"
             - name: SPRING_CLOUD_CONFIG_URI
               value: http://config-service
               # TODO Create a minimal reproducible sample and create issue in spring boot repo
