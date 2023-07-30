@@ -29,6 +29,8 @@ spec:
               value: order
             - name: SPRING_R2DBC_PASSWORD
               value: order
+            - name: POLAR_CATALOG_SERVICE_URI
+              value: http://catalog-service
             - name: SPRING_PROFILES_ACTIVE
               value: prod
             - name: AUTH_SERVER_URL
@@ -38,6 +40,12 @@ spec:
               # TODO Create a minimal reproducible sample and create issue in spring boot repo
             - name: SPRING_CLOUD_CONFIG_FAIL_FAST
               value: "false"
+            - name: SPRING_RABBITMQ_HOST
+              value: polar-rabbitmq
+            - name: DEBUG
+              value: "true"
+            - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_WEB_REACTIVE_FUNCTION_CLIENT
+              value: "trace"
           lifecycle:
             preStop:
               exec:
