@@ -22,6 +22,7 @@ public class BookClient {
     private final WebClient webClient;
 
     public Mono<Book> getBookByIsbn(String isbn) {
+        log.info("Getting book [isbn={}] from catalog service", isbn);
         return webClient
             .get()
             .uri(BOOKS_ROOT_API + isbn)
