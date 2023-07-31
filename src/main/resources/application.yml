@@ -29,6 +29,9 @@ spring:
     name: order-service
   lifecycle:
     timeout-per-shutdown-phase: 15s
+  devtools:
+    livereload:
+      port: 51201
   cloud:
     config:
       enabled: false

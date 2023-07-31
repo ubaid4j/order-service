@@ -14,14 +14,14 @@ import reactor.netty.transport.logging.AdvancedByteBufFormat;
 public class ClientConfig {
 
     @Bean
-    public boolean isDebug(
-        @Value("#{environment.getProperty('debug') != null && environment.getProperty('debug') != 'false'}")
+    public boolean isWebClientDebug(
+        @Value("#{environment.getProperty('webclient.debug') != null && environment.getProperty('webclient.debug') != 'false'}")
         boolean isDebug) {
         return isDebug;
     }
 
     @Bean
-    @ConditionalOnExpression("#{isDebug == true}")
+    @ConditionalOnExpression("#{isWebClientDebug == true}")
     public ReactorClientHttpConnector wiretappedConnector() {
         HttpClient httpClient =
             HttpClient.create()

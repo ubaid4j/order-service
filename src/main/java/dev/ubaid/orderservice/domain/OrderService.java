@@ -34,15 +34,13 @@ public class OrderService {
     }
 
     private static Order buildAcceptedOrder(Book book, int quantity) {
-        Order order = Order.of(
+        return Order.of(
             book.isbn(),
             book.title() + "-" + book.author(),
             book.price(),
             quantity,
             OrderStatus.ACCEPTED
         );
-        log.info("Accepted Order: {}", order);
-        return order;
     }
 
     public static Order buildRejectedOrder(String bookIsbn, int quantity) {
