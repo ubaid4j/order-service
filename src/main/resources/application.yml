@@ -18,6 +18,12 @@ management:
             'caches',
             'liquibase',
           ]
+  endpoint:
+    health:
+      show-components: always
+      show-details: always
+      probes:
+        enabled: true
   info:
     git:
       mode: full
