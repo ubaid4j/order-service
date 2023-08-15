@@ -15,5 +15,8 @@ spring:
 
 logging:
   level:
-    root: debug
-DEBUG: true
+    root: DEBUG
+    org.springframework.security: TRACE
+    dev.ubaid: DEBUG
+webclient:
+  debug: true
