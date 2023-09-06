@@ -23,6 +23,7 @@ ext {
 	set('springCloudVersion', "2022.0.3")
 	set('testcontainersVersion', "1.18.3")
 	set('testKeycloakVersion', "3.0.0")
+	set('otelVersion', "1.29.0")
 }
 
 dependencies {
@@ -40,6 +41,7 @@ dependencies {
 	runtimeOnly 'org.postgresql:postgresql'
 	runtimeOnly 'org.springframework:spring-jdbc'
 	runtimeOnly 'org.postgresql:r2dbc-postgresql'
+	runtimeOnly "io.opentelemetry.javaagent:opentelemetry-javaagent:${otelVersion}"
 	annotationProcessor 'org.springframework.boot:spring-boot-configuration-processor'
 	annotationProcessor 'org.projectlombok:lombok'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
