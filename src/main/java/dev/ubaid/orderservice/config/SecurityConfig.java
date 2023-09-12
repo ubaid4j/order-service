@@ -29,6 +29,7 @@ public class SecurityConfig {
         return http
                 .authorizeExchange(exchange -> exchange
                         .pathMatchers(HttpMethod.GET, "/management/health/**").permitAll()
+                        .pathMatchers(HttpMethod.GET, "/management/prometheus/**").permitAll()
                         .anyExchange().authenticated()
                 )
                 .oauth2ResourceServer(oAuth2ResourceServerSpec -> oAuth2ResourceServerSpec.jwt(jwtSpec -> jwtSpec.jwtAuthenticationConverter(reactiveJwtAuthenticationConverter)))
