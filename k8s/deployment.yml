@@ -36,32 +36,6 @@ spec:
               port: 50201
             initialDelaySeconds: 5
             periodSeconds: 15
-          env:
-            - name: SPRING_FLYWAY_URL
-              value: jdbc:postgresql://order-postgres/polardb_order
-            - name: SPRING_R2DBC_URL
-              value: r2dbc:postgresql://order-postgres/polardb_order
-            - name: SPRING_R2DBC_USERNAME
-              value: order
-            - name: SPRING_R2DBC_PASSWORD
-              value: order
-            - name: POLAR_CATALOG_SERVICE_URI
-              value: http://catalog-service
-            - name: SPRING_PROFILES_ACTIVE
-              value: prod
-            - name: AUTH_SERVER_URL
-              value: "http://polar-keycloak"
-            - name: SPRING_CLOUD_CONFIG_URI
-              value: http://config-service
-              # TODO Create a minimal reproducible sample and create issue in spring boot repo
-            - name: SPRING_CLOUD_CONFIG_FAIL_FAST
-              value: "false"
-            - name: SPRING_RABBITMQ_HOST
-              value: polar-rabbitmq
-            - name: DEBUG
-              value: "true"
-            - name: LOGGING_LEVEL_ORG_SPRINGFRAMEWORK_WEB_REACTIVE_FUNCTION_CLIENT
-              value: "trace"
           lifecycle:
             preStop:
               exec:

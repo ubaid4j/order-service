@@ -1,0 +1,15 @@
+spring:
+  flyway:
+    url: jdbc:postgresql://order-postgres/polardb_order
+  r2dbc:
+    url: r2dbc:postgresql://order-postgres/polardb_order
+    username: order
+    password: order
+  rabbitmq:
+    host: polar-rabbitmq
+
+polar:
+  catalog-service-uri: "http://catalog-service"
+  home-message: Default k8s env, Welcome here
+
+AUTH_SERVER_URL: http://polar-keycloak
