@@ -40,3 +40,10 @@ spec:
             preStop:
               exec:
                 command: ["sh", "-c", "sleep 5"]
+          volumeMounts:
+            - mountPath: /workspace/config
+              name: order-service-config-volume
+      volumes:
+        - name: order-service-config-volume
+          configMap:
+            name: order-service-config
